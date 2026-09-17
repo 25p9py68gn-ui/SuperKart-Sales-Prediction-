@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 import requests
 
 st.set_page_config(page_title="SuperKart Sales Predictor", page_icon="🛒")
@@ -7,7 +8,7 @@ st.write("Enter product and store characteristics to estimate sales revenue.")
 
 api_url = st.text_input(
     "Backend prediction endpoint",
-    value="http://localhost:7860/v1/predict"
+value = os.getenv("API_URL", "http://localhost:7860/v1/predict")
 )
 
 product_weight = st.number_input("Product Weight", min_value=0.0, value=12.66)
